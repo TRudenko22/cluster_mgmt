@@ -1,0 +1,12 @@
+---
+# Copies the /etc/hosts on the local machine across all nodes
+# Ideally I'd use a config server to push the configuration 
+
+- name: Copy /etc/hosts
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Transfer file
+      copy:
+        src: /etc/hosts
+        dest: /etc/hosts

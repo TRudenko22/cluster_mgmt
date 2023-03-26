@@ -1,0 +1,14 @@
+---
+- name: Checking Temperatures of the cluster
+  hosts: cluster
+  become: true
+
+  tasks:
+    - name: Run sensors
+      command: sensors
+      register: command_output
+
+    - name: Outputting CPU temps
+      debug:
+        var: command_output.stdout_lines
+

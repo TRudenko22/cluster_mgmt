@@ -1,0 +1,14 @@
+---
+- name: Update and upgrade Ubuntu packages
+  become: yes
+  become_method: sudo
+  hosts: cluster
+  tasks:
+    - name: Update package list
+      apt:
+        update_cache: yes
+
+    - name: Upgrade packages
+      apt:
+        name: "*"
+        state: latest

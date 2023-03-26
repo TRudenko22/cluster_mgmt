@@ -1,0 +1,15 @@
+---
+- name: Update Packages
+  hosts: cluster
+  remote_user: root
+
+  tasks:
+    - name: Update packages
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+
+    - name: Install sensors
+      ansible.builtin.apt:
+        name: lm-sensors
+        state: latest
