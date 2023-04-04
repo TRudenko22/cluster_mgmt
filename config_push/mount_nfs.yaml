@@ -1,0 +1,14 @@
+---
+- name: copy /etc/fstab file to workers
+  hosts: workers
+  remote_user: root
+  become: true
+
+  tasks:
+    - name: copy fstab file
+      mount:
+        path: /mnt/nfs
+        src: anton:/mnt/nfs
+        fstype: nfs
+        opts: defaults
+        state: mounted

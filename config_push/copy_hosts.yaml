@@ -10,3 +10,4 @@
       copy:
         src: /etc/hosts
         dest: /etc/hosts
+
