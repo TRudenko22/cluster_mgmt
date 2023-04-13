@@ -5,7 +5,7 @@
   become: true
 
   tasks:
-    - name: copy fstab file
+    - name: mount nfs volume
       mount:
         path: /mnt/nfs
         src: anton:/mnt/nfs
