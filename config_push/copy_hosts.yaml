@@ -3,7 +3,7 @@
 # Ideally I'd use a config server to push the configuration 
 
 - name: Copy /etc/hosts
-  hosts: cluster
+  hosts: cluster, merc
   become: true
   tasks:
     - name: Transfer file
