@@ -1,0 +1,23 @@
+---
+- name: Pull ca certificate
+  hosts: merc
+  become: true
+  tasks:
+    - name: Pull ca.pem from merc server
+      fetch:
+        src: ~/containers/merc_registry/ssl/ca.pem
+        dest: ./configs/merc_registry.crt
+        flat: true
+
+- name: Copy cert to root CA on targets
+  hosts: cluster
+  become: true
+  tasks:
+    - name: Copy file to root CA
+      copy: 
+        src: ./configs/merc_registry.crt
+        dest: /usr/local/share/ca-certificates/merc_registry.crt
+
+    - name: Update root CA
+      command: update-ca-certificates
+        
